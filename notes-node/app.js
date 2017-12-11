@@ -3,21 +3,22 @@ console.log('Starting app.js');
 // open up https://nodejs.org/api and grab some modules
 const fs = require('fs');
 const _ = require('lodash');
+const yargs = require('yargs');
 
 const notes = require('./notes.js');
-
-let command = process.argv[2];
-console.log('Command:', command);
-console.log(process.argv);
+const argv = yargs.argv;
+console.log('Yargs:', argv);
+const command = argv._[0]
 
 if(command === 'add') {
-  console.log('Adding new note');
+  notes.addNote(argv.title, argv.body);
 } else if (command === 'list') {
   console.log('Listing all notes');
+  notes.getAll();
 } else if (command === 'read') {
-  console.log('Reading a note');
+  notes.getNote(argv.title);
 } else if (command === 'remove') {
-  console.log('Removing the note');
+  notes.removeNote(argv.title);
 } else {
   console.log('Command not recognized');
 }

@@ -3,13 +3,19 @@ console.log('Starting app.js');
 // open up https://nodejs.org/api and grab some modules
 const fs = require('fs');
 const os = require('os');
+const _ = require('lodash');
 const notes = require('./notes.js');
 
-let res = notes.addNote();
-console.log(res);
+// console.log(_.isString(true));
+// console.log(_.isString("Ben Simmons"));
+const filteredArray = _.uniq(['Embiid', 1, "Embiid", 1,2,3,4]);
+console.log(filteredArray);
 
-let sum = notes.add(2,3);
-console.log(sum);
+// let res = notes.addNote();
+// console.log(res);
+
+// let sum = notes.add(2,3);
+// console.log(sum);
 
 // let user = os.userInfo();
 // console.log(user);

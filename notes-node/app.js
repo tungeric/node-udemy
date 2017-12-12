@@ -1,5 +1,3 @@
-console.log('Starting app.js');
-
 // open up https://nodejs.org/api and grab some modules
 const fs = require('fs');
 const _ = require('lodash');

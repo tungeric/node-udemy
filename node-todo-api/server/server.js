@@ -1,3 +1,5 @@
+const env = process.env.NODE_ENV;
+
 const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -17,6 +19,21 @@ const port = process.env.PORT || 3000; // USE THIS TO PUSH TO HEROKU
 app.use(bodyParser.json());
 
 // create REST api
+
+//POST USERS
+app.post('/users', (req, res) => {
+  const body = _.pick(req.body, ['email', 'password']);
+  const user = new User({
+    email: body.email,
+    password: body.password
+  });
+  user.save().then((doc) => {
+    res.send(doc);
+  }).catch((err) => {
+    res.status(400).send(err);
+  });
+});
+
 //POST TODO
 app.post('/todos', (req, res) => {
   const todo = new Todo({

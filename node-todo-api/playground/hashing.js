@@ -5,6 +5,13 @@ const data = {
   id: 10
 };
 
+const token = jwt.sign(data, '123abc');
+console.log(token);
+
+const decoded = jwt.verify(token, '123abc');
+console.log(decoded);
+// jwt.verify // does opposite of jwt.sign
+
 // const message = "Trust the process";
 // const hash = SHA256(message).toString();
 
